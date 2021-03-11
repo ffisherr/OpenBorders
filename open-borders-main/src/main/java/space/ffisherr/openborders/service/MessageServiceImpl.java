@@ -1,6 +1,7 @@
 package space.ffisherr.openborders.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import space.ffisherr.openborders.model.MessageDTO;
@@ -20,7 +21,7 @@ public class MessageServiceImpl implements MessagesService {
     }
 
     @Override
-    public Slice<MessageDTO> readAllMessagesByUser(Long userId) {
-        return repository.findByUserId(userId).map(converter::convertFromEntity);
+    public Slice<MessageDTO> readAllMessagesByUser(Long userId, Pageable pageable) {
+        return repository.findByUserId(userId, pageable).map(converter::convertFromEntity);
     }
 }

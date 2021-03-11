@@ -28,4 +28,5 @@ create table countries (
 );
 
 // temp
-insert into messages values ( 1, 'Hi', 1, true, now());
+insert into messages values ( 1, 'Hi', 1, true, '2021-03-10 9:59');
+insert into messages values ( 2, 'Hello somone', 1, false, '2021-03-10 10:00');
