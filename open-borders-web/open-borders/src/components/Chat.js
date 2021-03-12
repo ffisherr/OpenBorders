@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Message from './Message.js';
+import "./styles.css";
 
 class Chat extends Component {
 
@@ -64,9 +65,11 @@ class Chat extends Component {
     render() {
         return (
             <div className="chat">
-                {this.state.messages.map(message => (
-                    <Message key={message.id} sender={message.isFromUser ? this.state.username : "Бот"} message={message.message} />
-                ))}
+                <div className="messages">
+                    {this.state.messages.map(message => (
+                        <Message key={message.id} sender={message.isFromUser ? this.state.username : "Бот"} message={message.message} />
+                    ))}
+                </div>
                 <input type="text" ref={(ip) => this.myInp = ip}  value={this.state.input} onChange={ this.handleChange.bind(this) } 
                 onKeyPress={event => {
                     if (event.key === 'Enter') {
