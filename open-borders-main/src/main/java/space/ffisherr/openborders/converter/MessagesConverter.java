@@ -11,6 +11,7 @@ public class MessagesConverter implements Converter<MessageDTO, Messages> {
     @Override
     public MessageDTO convertFromEntity(Messages entity) {
         final MessageDTO model = new MessageDTO();
+        model.setId(entity.getId());
         model.setUserId(entity.getUserId());
         model.setIsFromUser(entity.getIsFrom());
         model.setMessage(entity.getMessage());
