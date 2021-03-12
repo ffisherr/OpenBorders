@@ -10,6 +10,15 @@ class Chat extends Component {
     }
 
     componentDidMount() {
+          fetch("http://localhost:8080/user/me/")
+            .then(response => response.json())
+            .then((response) =>{
+                this.setState({username: response.userName});
+            });
+            this.getMessages();
+      }
+    
+    getMessages() {
         fetch("http://localhost:8080/messages")
           .then(res => res.json())
           .then(
@@ -27,13 +36,7 @@ class Chat extends Component {
                 });
             }
           );
-          fetch("http://localhost:8080/user/me/")
-            .then(response => response.json())
-            .then((response) =>{
-                this.setState({username: response.userName});
-            });
       }
-    
 
     handleChange(e) {
         this.setState( {
@@ -44,7 +47,14 @@ class Chat extends Component {
 
     handleClick(e) {
         console.log('Sending: ' + this.state.input);
-        
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: this.state.input })
+        };
+        fetch('http://localhost:8080/messages/', requestOptions)
+            .then(response => response.json())
+            .then((response) => this.setState({ messages: response.content }));
     }
 
     render() {

@@ -5,7 +5,7 @@ class Message extends Component {
     render() {
         return (
             <div className="message">
-                <p>{this.props.sender}:{this.props.message}</p>
+                <p>{this.props.sender} : {this.props.message}</p>
             </div>
         );
     }
