@@ -1,8 +1,10 @@
 package space.ffisherr.openborders.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import space.ffisherr.openborders.entity.Messages;
 import space.ffisherr.openborders.model.MessageDTO;
@@ -29,7 +31,8 @@ public class MessageServiceImpl implements MessagesService {
 
     @Override
     public Slice<MessageDTO> readAllMessagesByUser(Long userId, Pageable pageable) {
-        return repository.findByUserId(userId, pageable).map(converter::convertFromEntity);
+        return repository.findByUserId(userId, PageRequest.of(0, Integer.MAX_VALUE-1, Sort.by("sentAt")))
+                .map(converter::convertFromEntity);
     }
 
     private void createBotAnswer(Messages userMessage) {

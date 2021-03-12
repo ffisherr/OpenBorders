@@ -16,6 +16,7 @@ class Chat extends Component {
                 this.setState({username: response.userName});
             });
             this.getMessages();
+            this.myInp.focus();
       }
     
     getMessages() {
@@ -47,10 +48,13 @@ class Chat extends Component {
 
     handleClick(e) {
         console.log('Sending: ' + this.state.input);
+        const messageText = this.state.input;
+        this.setState({input: ''});
+        this.myInp.focus();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: this.state.input })
+            body: JSON.stringify({ message: messageText })
         };
         fetch('http://localhost:8080/messages/', requestOptions)
             .then(response => response.json())
@@ -63,8 +67,13 @@ class Chat extends Component {
                 {this.state.messages.map(message => (
                     <Message key={message.id} sender={message.isFromUser ? this.state.username : "Бот"} message={message.message} />
                 ))}
-                <input type="text" onChange={ this.handleChange.bind(this) } />
-                <button className="square" onClick={ this.handleClick.bind(this) }>
+                <input type="text" ref={(ip) => this.myInp = ip}  value={this.state.input} onChange={ this.handleChange.bind(this) } 
+                onKeyPress={event => {
+                    if (event.key === 'Enter') {
+                        this.handleClick(this);
+                    }
+                }}/>
+                <button type="submit" className="square" onClick={this.handleClick.bind(this)}>
                     Send
                 </button>
             </div>
