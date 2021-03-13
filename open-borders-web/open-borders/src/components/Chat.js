@@ -66,10 +66,12 @@ class Chat extends Component {
         return (
             <div className="chat">
                 <div className="messages">
+                    <div>
+
                     {this.state.messages.map(message => (
                         <Message key={message.id} sender={message.isFromUser ? this.state.username : "Бот"} message={message.message} />
                     ))}
-                </div>
+                    </div>
                 <input type="text" ref={(ip) => this.myInp = ip}  value={this.state.input} onChange={ this.handleChange.bind(this) } 
                 onKeyPress={event => {
                     if (event.key === 'Enter') {
@@ -79,6 +81,7 @@ class Chat extends Component {
                 <button type="submit" className="square" onClick={this.handleClick.bind(this)}>
                     Send
                 </button>
+                </div>
             </div>
         ); 
     }
