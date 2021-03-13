@@ -6,7 +6,7 @@ import space.ffisherr.openborders.model.MessageDTO;
 
 public interface MessagesService {
 
-   void userSendMessage(Long userId, String message);
+   void userSendMessage(Long userId, MessageDTO message);
 
    Slice<MessageDTO> readAllMessagesByUser(Long userId, Pageable pageable);
 

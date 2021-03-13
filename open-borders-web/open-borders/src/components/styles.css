@@ -1,0 +1,16 @@
+
+.messages {
+    background-color: rgb(248, 159, 42);
+    color: white;
+    width: 50%;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.square {
+    color: rgb(197, 168, 38);
+}
+
+text {
+    width: 50%;
+}
