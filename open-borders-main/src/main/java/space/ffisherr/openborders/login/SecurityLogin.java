@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -35,11 +36,11 @@ public class SecurityLogin extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/anonymous*").anonymous()
-                .antMatchers("/login*").permitAll()
+                .antMatchers("/login*", "/static/**", "/*.js", "/*.json", "/*.ico").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login.html")
+                .loginPage("/login")
                 .loginProcessingUrl("/perform_login")
                 .defaultSuccessUrl("/homepage.html", true)
                 .failureUrl("/login.html?error=true")
@@ -47,9 +48,11 @@ public class SecurityLogin extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/perform_logout")
-                .deleteCookies("JSESSIONID")
-                .logoutSuccessHandler(logoutSuccessHandler());
+                .logoutSuccessUrl("/logout")
+                .deleteCookies("JSESSIONID");
+//                .logoutSuccessHandler(logoutSuccessHandler());
     }
+
 
     private AuthenticationFailureHandler authenticationFailureHandler() {
 
@@ -63,6 +66,7 @@ public class SecurityLogin extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
 }
