@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Form from './components/Form' 
+import Login from './components/Login' 
+
 
 const inputs = [{
   name: "username",
@@ -30,7 +32,7 @@ const params = new URLSearchParams(window.location.search)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Form {...props} error={params.get('error')} />
+    <Login/>
   </React.StrictMode>,
   document.getElementById('root')
 );
