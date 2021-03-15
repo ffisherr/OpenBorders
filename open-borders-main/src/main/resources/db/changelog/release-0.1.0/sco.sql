@@ -1,6 +1,13 @@
-create sequence message_seq_id start with 1 INCREMENT BY 1;
-
+drop sequence if exists message_seq_id;
+drop sequence if exists country_seq_id;
+drop sequence if exists user_seq_id;
 drop table if exists messages;
+drop table if exists users;
+drop table if exists countries;
+
+create sequence message_seq_id start with 1 INCREMENT BY 1;
+create sequence country_seq_id start with 1 INCREMENT BY 1;
+create sequence user_seq_id start with 1 INCREMENT BY 1;
 
 create table messages (
     id bigint not null,
@@ -11,8 +18,6 @@ create table messages (
     constraint PK_MESSAGES_ID primary key (id)
 );
 
-drop table if exists users;
-
 create table users (
     id integer not null,
     email text not null,
@@ -20,10 +25,8 @@ create table users (
     constraint PK_USERS_ID primary key (id)
 );
 
-drop table if exists countries;
-
 create table countries (
-    id integer not null,
+    id bigint not null,
     name text not null,
     is_available bool not null default false,
     constraint PK_COUNTRIES_ID primary key (id)
