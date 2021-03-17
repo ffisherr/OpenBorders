@@ -1,14 +1,23 @@
-import React, {useState} from 'react';
+import React, {Component} from 'react';
 import {Navbar, Nav, Button, Container, Modal, Form} from 'react-bootstrap';
 
-export default function Login() {
+class Login extends Component {
 
-        const [show, setShow] = useState(false);
+        state = {
+            showRegistration: false,
+        };
 
-        const handleClose = () =>setShow(false);
-        const handleShow = () =>setShow(true);
+        handleClose() {
+            this.setState({showRegistration: false});
+            console.log('Закрываем окно');
+        }
 
+        handleShow () {
+            this.setState({showRegistration: true});
+            console.log('Открываем окно');
+        }
 
+        render() {
         return(
             <Form>
                 <Form.Group controlId="formBasicEmail">
@@ -25,7 +34,7 @@ export default function Login() {
                     Input   
                 </Button>
 
-                <Button variant="primary" type="Registration"className="mr-3" onClick={handleShow}>
+                <Button variant="primary" type="Registration"className="mr-3" onClick={this.handleShow.bind(this)}>
                     Registration
                 </Button>
                 
@@ -33,7 +42,7 @@ export default function Login() {
                     PasswordRecovery
                 </Button>
 
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={this.state.showRegistration} onHide={this.handleClose.bind(this)}>
                     <Modal.Header closeButton>
                         <Modal.Title>Registration</Modal.Title>
                     </Modal.Header>
@@ -57,6 +66,8 @@ export default function Login() {
              </Form> 
 
         )
+        };
     
 }
 
+export default Login;
