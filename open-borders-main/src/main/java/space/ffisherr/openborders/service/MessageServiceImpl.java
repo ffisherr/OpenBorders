@@ -53,7 +53,7 @@ public class MessageServiceImpl implements MessagesService {
         final Messages botMessage = new Messages();
         botMessage.setIsFrom(false);
         botMessage.setUserId(userMessage.getUserId());
-        botMessage.setMessage("Когда-нибудь я тебя пойму");
+        botMessage.setMessage(resultMessageText);
         botMessage.setSentAt(new Timestamp(System.currentTimeMillis()));
         repository.save(botMessage);
     }
