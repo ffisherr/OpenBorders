@@ -8,7 +8,7 @@
 ">
 
     <changeSet id="DB deployment" author="none">
-        <sqlFile path="sco.sql" splitStatements="false" relativeToChangelogFile="true"/>
+        <sqlFile path="openborders.sql" splitStatements="false" relativeToChangelogFile="true"/>
     </changeSet>
 
 

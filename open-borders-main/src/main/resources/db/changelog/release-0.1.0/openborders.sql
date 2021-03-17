@@ -42,9 +42,5 @@ create table countries (
     is_available bool not null default false,
     constraint PK_COUNTRIES_ID primary key (id)
 );
---
--- temp
--- insert into messages values ( -1, 'Hi', 1, true, '2021-03-10 9:59');
--- insert into messages values ( -2, 'Hello somone', 1, false, '2021-03-10 10:00');
 
 insert into countries (id, name) values ( country_seq_id.nextval, 'Австралия' )
