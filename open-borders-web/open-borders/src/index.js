@@ -5,34 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Form from './components/Form' 
 import Login from './components/Login' 
-
-
-const inputs = [{
-  name: "username",
-  placeholder: "username",
-  type: "text"
-},{
-  name: "password",
-  placeholder: "password",
-  type: "password"
-},{
-  type: "submit",
-  value: "Submit",
-  className: "btn" 
-}]
-
-const props = {
-  name: 'loginForm',
-  method: 'POST',
-  action: '/perform_login',
-  inputs: inputs
-}
-
-const params = new URLSearchParams(window.location.search)
+import Registration from './components/Registration';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

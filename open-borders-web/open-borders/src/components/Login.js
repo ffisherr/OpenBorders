@@ -1,26 +1,23 @@
 import React, {Component} from 'react';
 import {Navbar, Nav, Button, Container, Modal, Form} from 'react-bootstrap';
+import { Switch, BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import Registration from './Registration';
 
 class Login extends Component {
 
-        state = {
-            showRegistration: false,
-        };
-
-        handleClose() {
-            this.setState({showRegistration: false});
-            console.log('Закрываем окно');
-        }
 
         handleShow () {
-            this.setState({showRegistration: true});
+            window.location.assign('http://localhost:3001/registration');
             console.log('Открываем окно');
         }
 
         render() {
         return(
+            <>
+
             <Form>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicUsername">
                     <Form.Label>Username</Form.Label>
                     <Form.Control type="username" placeholder="Username" />
                 </Form.Group>
@@ -41,29 +38,23 @@ class Login extends Component {
                 <Button variant="primary" type="PasswordRecovery">
                     PasswordRecovery
                 </Button>
+                
+                <Router>
+                    <Switch>
+                        <Route exact path="http://localhost:3001/registration" component={Registration}/>
+                    </Switch>
+                </Router>
 
-                <Modal show={this.state.showRegistration} onHide={this.handleClose.bind(this)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Registration</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form>
-                            <Form.Group controlId="fromBasicEmail">
-                                <Form.Label>Email Adress</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email"/>
-                            </Form.Group>
-                            <Form.Group controlId="fromBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Enter password"/>
-                            </Form.Group>
-                            <Form.Group controlId="fromBasicCheckBox">
-                                <Form.Control type="checkbox" placeholder="Remember password"/>
-                            </Form.Group>
-                        </Form>
-                    </Modal.Body>
-                </Modal>
 
+
+                
+                
              </Form> 
+
+
+
+             </>
+
 
         )
         };
