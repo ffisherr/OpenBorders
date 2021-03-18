@@ -43,12 +43,12 @@ create table countries (
     constraint PK_COUNTRIES_ID primary key (id)
 );
 
-insert into countries (id, name) values ( country_seq_id.nextval, 'Австралия' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Великобритания' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Индия' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Куба' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Турция' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Болгария' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Дания' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Италия' )
-insert into countries (id, name) values ( country_seq_id.nextval, 'Канада' )
+insert into countries (id, name) values ( country_seq_id.nextval, 'Австралия' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Великобритания' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Индия' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Куба' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Турция' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Болгария' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Дания' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Италия' );
+insert into countries (id, name) values ( country_seq_id.nextval, 'Канада' );
