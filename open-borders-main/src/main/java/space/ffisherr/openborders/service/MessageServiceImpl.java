@@ -24,10 +24,12 @@ public class MessageServiceImpl implements MessagesService {
     private static final String ALL_COMMANDS_CODE = "1";
     private static final String GET_OPENED_COUNTRY_CODE = "2";
     private static final String ADD_WANTED_COUNTRY_CODE = "3";
+    private static final String ALL_MY_COUNTRIES_CODE = "4";
     private static final List<String> ALL_COMMANDS_LIST = Arrays.asList(
             ALL_COMMANDS_CODE + " - получение списка комманд",
             GET_OPENED_COUNTRY_CODE + " - получить оповещения",
-            ADD_WANTED_COUNTRY_CODE + " - добавить страну для посещения"
+            ADD_WANTED_COUNTRY_CODE + " - добавить страну для посещения",
+            ALL_MY_COUNTRIES_CODE + " - получить все страны"
     );
     private final MessagesRepository repository;
     private final MessagesConverter converter;
@@ -69,11 +71,14 @@ public class MessageServiceImpl implements MessagesService {
                 result = ALL_COMMANDS_LIST.toString();
                 break;
             case GET_OPENED_COUNTRY_CODE:
-                result = countryService.getOpenedCountries(message.getUserId()).toString();
+                result = convertCountriesTostring(countryService.getOpenedCountries(message.getUserId()));
                 break;
             case ADD_WANTED_COUNTRY_CODE:
                 result = "Введите название страны которую вы хотели бы посетить, " +
                         "и мы обязательно сообщим вам как только она откроется!";
+                break;
+            case ALL_MY_COUNTRIES_CODE:
+                result = countryService.getAllUserCountries(message.getUserId());
                 break;
             default:
                 final Optional<Messages> optionalUserMessage = repository.getPreviousUserMessage(message.getUserId());
@@ -91,5 +96,13 @@ public class MessageServiceImpl implements MessagesService {
                 break;
         }
         return result;
+    }
+
+    private String convertCountriesTostring(List<String> openedCountries) {
+        String res = "Не найдено стран.";
+        if (openedCountries != null && !openedCountries.isEmpty()) {
+            res = "Список открытых стран пользователя: " + openedCountries.toString();
+        }
+        return res;
     }
 }

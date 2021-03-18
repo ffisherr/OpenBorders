@@ -11,4 +11,6 @@ public interface CountryService {
     Countries getCountry(String lastUserMessage);
 
     void addCountryForUser(Countries country, Long userId);
+
+    String getAllUserCountries(Long userId);
 }

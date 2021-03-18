@@ -17,4 +17,7 @@ public interface UserCountriesRepository extends CrudRepository<UserWantedCountr
 
     @Query("select c from Countries c where c.name = :countryName")
     Optional<Countries> findByName(@Param("countryName") String countryName);
+
+    @Query("select c from UserWantedCountries c where c.user.id = :userId")
+    List<UserWantedCountries> findAllByUser(@Param("userId") Long userId);
 }

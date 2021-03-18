@@ -18,7 +18,6 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public List<String> getOpenedCountries(Long userId) {
-        System.out.println(repository.findAllOpenedCountriesNames(userId));
         return repository.findAllOpenedCountriesNames(userId);
 
     }
@@ -36,6 +35,17 @@ public class CountryServiceImpl implements CountryService {
             userCountry.setName(country.getName());
             repository.save(userCountry);
         });
+    }
+
+    @Override
+    public String getAllUserCountries(Long userId) {
+        final List<UserWantedCountries> countries = repository.findAllByUser(userId);
+        final StringBuilder sb = new StringBuilder();
+        sb.append("Страны для посещения:\n");
+        for (UserWantedCountries c : countries) {
+            sb.append(c.getName()).append(" ");
+        }
+        return sb.toString();
     }
 
 }
