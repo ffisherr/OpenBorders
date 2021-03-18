@@ -15,14 +15,14 @@
 }
 
 .square {
-    
-    left: 210px;
+    position: relative;
+    left: 20px;
     color: rgb(0, 0, 0);
     bottom: 0;
 }
 
 .lable{
-    position: absolute;
+    position: relative;
     left: 10px;
     bottom: 0;
      

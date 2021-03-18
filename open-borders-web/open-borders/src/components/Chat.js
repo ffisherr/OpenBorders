@@ -72,7 +72,7 @@ class Chat extends Component {
                         <Message key={message.id} sender={message.isFromUser ? this.state.username : "Бот"} message={message.message} />
                     ))}
                     </div>
-                <input  type="text" ref={(ip) => this.myInp = ip}  value={this.state.input} onChange={ this.handleChange.bind(this) } 
+                <input className="lable" type="text" ref={(ip) => this.myInp = ip}  value={this.state.input} onChange={ this.handleChange.bind(this) } 
                 onKeyPress={event => {
                     if (event.key === 'Enter') {
                         this.handleClick(this);
