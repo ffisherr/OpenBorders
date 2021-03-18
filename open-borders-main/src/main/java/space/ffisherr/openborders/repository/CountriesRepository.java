@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface CountriesRepository extends CrudRepository<Countries, Long> {
 
-    @Query("select c.name from Countries c where c.isAvailable = true")
-    List<String> findAllOpenedCountriesNames();
+    @Query("select c from Countries c where c.isAvailable = false")
+    List<Countries> findAllClosedCountries();
+
 
 }

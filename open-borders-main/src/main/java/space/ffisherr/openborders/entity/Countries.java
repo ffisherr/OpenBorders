@@ -17,6 +17,6 @@ public class Countries {
     @SequenceGenerator(name = "id_seq", sequenceName = "country_seq_id")
     private Long id;
     private String name;
-    private boolean isAvailable;
+    private Boolean isAvailable;
 
 }

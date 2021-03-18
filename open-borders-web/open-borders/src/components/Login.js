@@ -8,7 +8,7 @@ class Login extends Component {
 
 
         handleShow () {
-            window.location.assign('http://localhost:3001/registration');
+            window.location.assign('http://localhost:3000/registration');
             console.log('Открываем окно');
         }
 
@@ -41,7 +41,7 @@ class Login extends Component {
                 
                 <Router>
                     <Switch>
-                        <Route exact path="http://localhost:3001/registration" component={Registration}/>
+                        <Route exact path="http://localhost:3000/registration" component={Registration}/>
                     </Switch>
                 </Router>
 
