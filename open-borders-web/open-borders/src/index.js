@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import Form from './components/Form' 
 import Login from './components/Login' 
 import Registration from './components/Registration';
+import Chat from './components/Chat';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login/>
+    <Chat/>
   </React.StrictMode>,
   document.getElementById('root')
 );

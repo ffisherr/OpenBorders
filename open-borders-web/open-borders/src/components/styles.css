@@ -3,7 +3,7 @@
     background-color: rgba(250, 208, 154, 0.575);
     color: black;
     width: 50%;
-    height: 400px;
+    height: 500px;
     overflow-y: scroll;
     margin: 0;
     position: absolute;
@@ -15,5 +15,34 @@
 }
 
 .square {
+    
+    left: 210px;
     color: rgb(0, 0, 0);
+    bottom: 0;
 }
+
+.lable{
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+     
+}
+
+.login {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+}
+
+.buttoninput {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.buttons2 {
+    position: absolute;
+    top: 10px;
+
+}
+
