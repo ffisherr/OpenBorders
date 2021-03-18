@@ -22,8 +22,8 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Countries getCountry(String lastUserMessage) {
-        return null; // TODO
+    public Countries getCountry(String countryName) {
+        return repository.findByName(countryName).orElse(null);
     }
 
     @Override

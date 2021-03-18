@@ -76,11 +76,12 @@ public class MessageServiceImpl implements MessagesService {
                         "и мы обязательно сообщим вам как только она откроется!";
                 break;
             default:
-                final Optional<Messages> optionalUserMessage = repository.getLastUserMessage(message.getUserId());
+                final Optional<Messages> optionalUserMessage = repository.getPreviousUserMessage(message.getUserId());
                 if (optionalUserMessage.isPresent()) {
-                    final String lastUserMessage = optionalUserMessage.get().getMessage();
-                    if (ADD_WANTED_COUNTRY_CODE.equals(lastUserMessage)) {
-                        final Countries country = countryService.getCountry(lastUserMessage);
+                    final String previousUserMessage = optionalUserMessage.get().getMessage();
+                    if (ADD_WANTED_COUNTRY_CODE.equals(previousUserMessage)) {
+                        final Countries country = countryService.getCountry(text);
+                        result = "Страна не найдена, повторить шаги заново! (Название страны вводится с большой буквы)";
                         if (country != null) {
                             countryService.addCountryForUser(country, message.getUserId());
                             result = "Страна успешно найдена и добавлена в список!";

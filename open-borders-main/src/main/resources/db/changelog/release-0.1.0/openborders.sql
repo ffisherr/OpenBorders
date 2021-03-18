@@ -52,3 +52,5 @@ insert into countries (id, name) values ( country_seq_id.nextval, 'Болгар�
 insert into countries (id, name) values ( country_seq_id.nextval, 'Дания' );
 insert into countries (id, name) values ( country_seq_id.nextval, 'Италия' );
 insert into countries (id, name) values ( country_seq_id.nextval, 'Канада' );
+
+insert into users values ( -1, 'test@gmail.com', 'pwd' )

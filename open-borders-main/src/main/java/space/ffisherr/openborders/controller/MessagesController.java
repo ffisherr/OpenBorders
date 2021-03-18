@@ -22,14 +22,14 @@ public class MessagesController {
 
     @GetMapping
     public Slice<MessageDTO> readAllByUser(Pageable pageable) {
-        final Long userId = 1L; // TODO temp fix
+        final Long userId = -1L; // TODO temp fix
         log.info("Reading all messages by user with id {}", userId);
         return service.readAllMessagesByUser(userId, pageable);
     }
 
     @PostMapping
     public Slice<MessageDTO> sendUserMessage(@RequestBody MessageDTO message, Pageable pageable) {
-        final Long userId = 1L; // TODO temp fix
+        final Long userId = -1L; // TODO temp fix
         message.setIsFromUser(true);
         service.userSendMessage(userId, message);
         log.info("Reading all messages by user with id {}", userId);
