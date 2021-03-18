@@ -17,6 +17,11 @@ class Login extends Component {
             <>
 
             <Form>
+                <Router>
+                        <Switch>
+                            <Route exact path="http://localhost:3000/registration" component={Registration}/>
+                        </Switch>
+                    </Router>
                 <Form.Group controlId="formBasicUsername">
                     <Form.Label>Username</Form.Label>
                     <Form.Control type="username" placeholder="Username" />
@@ -39,11 +44,7 @@ class Login extends Component {
                     PasswordRecovery
                 </Button>
                 
-                <Router>
-                    <Switch>
-                        <Route exact path="http://localhost:3000/registration" component={Registration}/>
-                    </Switch>
-                </Router>
+
 
 
 

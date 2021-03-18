@@ -20,7 +20,7 @@ public class AutoCountryOpen {
     private final CountriesRepository repository;
 
 
-    @Scheduled(fixedDelay = 120000)
+    @Scheduled(fixedDelay = 30000)
     public void scheduleFixedDelayTask(){
 
 

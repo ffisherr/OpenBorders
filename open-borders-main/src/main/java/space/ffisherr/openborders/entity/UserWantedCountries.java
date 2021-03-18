@@ -16,7 +16,7 @@ public class UserWantedCountries {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
-    @SequenceGenerator(name = "id_seq", sequenceName = "country_seq_id")
+    @SequenceGenerator(name = "id_seq", sequenceName = "user_wanted_countries_seq_id")
     private Long id;
     private String name;
 

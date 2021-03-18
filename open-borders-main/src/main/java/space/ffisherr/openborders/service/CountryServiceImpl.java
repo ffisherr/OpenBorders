@@ -18,7 +18,9 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public List<String> getOpenedCountries(Long userId) {
+        System.out.println(repository.findAllOpenedCountriesNames(userId));
         return repository.findAllOpenedCountriesNames(userId);
+
     }
 
     @Override

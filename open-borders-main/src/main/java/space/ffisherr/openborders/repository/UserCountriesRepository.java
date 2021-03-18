@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface UserCountriesRepository extends CrudRepository<UserWantedCountries, Long> {
 
-    @Query("select c from UserWantedCountries c left join Countries c1 on c.name = c1.name " +
+    @Query("select c.name from UserWantedCountries c left join Countries c1 on c.name = c1.name " +
             "where c.user.id = :userId and c1.isAvailable = true")
     List<String> findAllOpenedCountriesNames(@Param("userId")Long userId);
 
